@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<title>find Bt here</title>
+
+		<!-- Bootstrap -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/static/css/search-form.css">
+	</head>
+	<style>
+		body {
+			padding-top: 50px;
+			padding-bottom: 50px;
+		}
+		
+		.carousel {
+			height: 500px;
+			background: #000;
+			margin-bottom: 20px;
+		}
+		
+		.carousel .item {
+			height: 500px;
+			background: #000;
+		}
+		
+		.carousel img {
+			width: 100%;
+		}
+		
+		.carousel-caption {
+			margin-bottom: 20px;
+			font-size: 20px;
+			line-height: 1.8;
+		}
+		
+		.summary-container .col-md-4 {
+			text-align: center;
+		}
+		
+		.divider {
+			margin: 40px 0px;
+		}
+		
+		.feature {
+			padding: 30px 0;
+		}
+		img
+		{
+			width:400px;
+			height:400px;
+		}
+		.btn .btn-lg .btn-primary
+		{display:none;
+
+        }
+        .container p,
+        h1
+        {
+            color:white;
+        }
+	</style>
+
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#demo-nabar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+					<a class="navbar-brand" href="#">电影院</a>
+				</div>
+				<div class="collapse navbar-collapse" id="demo-nabar">
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="#" data-toggle="modal" data-target="#about1">主旨</a>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">电影类型</a>
+							<ul class="dropdown-menu" role="menu">
+								<li>
+									<a href="/home/movie?id=4&pgs=0">恐怖</a>
+								</li>
+								<li>
+									<a href="/home/movie?id=3&pgs=0">惊悚</a>
+								</li>
+								<li>
+									<a href="/home/movie?id=5&pgs=0">战争</a>
+								</li>
+								<li>
+									<a href="/home/movie?id=2&pgs=0">动作</a>
+								</li>
+								
+								<li>
+									<a href="/home/movie?id=0&pgs=0">喜剧片</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#" data-toggle="modal" data-target="#about">关于</a>
+						</li>
+
+
+					</ul>
+				</div>
+			</div>
+		</nav>
+        <div style="position:absolute;z-index:2;width: 100%;margin-top: 10%">
+            <form onsubmit="submitFn(this, event);" id="sbmit" action="/test/" method="get" >
+                            <div class="search-wrapper">
+                <div class="input-holder">
+                    <input autocomplete="off" type="text" class="search-input" placeholder="Type to search"  name="k"/>
+                    <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
+                </div>
+                <span class="close" onclick="searchToggle(this, event);"></span>
+                <div class="result-container">
+
+                </div>
+            </div>
+                             </form>
+
+        </div>
+
+
+
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="3"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="4"></li>
+			</ol>
+
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+                    <a href="/test/?k=战狼" ><img src="static/images/iamwha_043_0606.jpg" alt="..."></a>
+					<div class="carousel-caption">
+						<h1>movie</h1>
+						<p>该片是一部关于描绘武器交易世界的电影，讲述了一个发生在乌克兰军火商人尤瑞·奥洛夫身上，充满火爆动作场面的故事。</p>
+					</div>
+				</div>
+				<div class="item">
+					<img src="static/images/timgVQMFSHBM.jpg" alt="..." >
+					<div class="carousel-caption">
+						<h1>movie</h1>
+						<p>茅山道士阳六和助手皮蛋每天以抓鬼为生，两人形影不离，业务繁忙。某天，美女莫小奇在自己的公寓遭遇女鬼，吓得魂飞魄散，次日，莫小奇请阳六和皮蛋来公寓抓鬼。</p>
+
+					</div>
+				</div>
+				<div class="item">
+					<img src="static/images/timgYRKEKTY3.jpg" alt="...">
+					<div class="carousel-caption">
+						<h1>movie</h1>
+						<p>擎天柱“错认他乡”，变形金刚5都埋了什么秘密？对于整个变形金刚系列。擎天柱的宿命就是：错认他乡。从擎天柱一开始来到地球，就无条件的帮助人类，保护人类，甚至不惜牺牲自己的母星为代价。而人类一次次的对这些外星钢铁产生质疑，产生恐惧。</p>
+					</div>
+				</div>
+				<div class="item">
+					<img src="static/images/dead5.jpeg" alt="...">
+					<div class="carousel-caption">
+						<h1>movie</h1>
+						<p>影片讲述的是一场高架索桥倒塌引发的死亡事件中，几个幸运儿侥幸逃生，但死神显然没有放过他们，接下来，又是一场场意外接踵发生的故事。</p>
+
+					</div>
+				</div>
+				<div class="item">
+					<img src="static/images/timgTP6D6QKF.jpg" alt="...">
+					<div class="carousel-caption">
+						<h1>movie</h1>
+						<p>片讲述了脱下军装的冷锋被卷入了一场非洲国家的叛乱，本来能够安全撤离的他无法忘记军人的职责，重回战场展开救援的故事。</p>
+
+					</div>
+				</div>
+			</div>
+
+			<!-- Controls -->
+			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">上一页</span>
+			</a>
+			<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">下一页</span>
+			</a>
+		</div>
+
+		<div class="container summary-container">
+			<div class="row">
+				<div class="col-md-4">
+					<img src="static/images/wallhaven-323459.jpg" />
+					<h1>movie</h1>
+					<p>港深公路上一间酒吧，收银员阿朗厌倦了酒吧的人和事，货柜车司机阿春出现，二人爱上了对方却又互相猜疑。</p>
+
+				</div>
+				<div class="col-md-4">
+					<img src="static/images/3398348_739827.jpg" />
+					<h1>movie</h1>
+					<p>港影片以1912年泰坦尼克号邮轮在其处女启航时触礁冰山而沉没的事件为背景，讲述了处于不同阶层的两个人穷画家杰克和贵族女露丝抛弃世俗的偏见坠入爱河，最终杰克把生命的机会让给了露丝的感人故事。</p>
+
+				</div>
+				<div class="col-md-4">
+					<img src="static/images/3.jpg" />
+					<h1>movie</h1>
+					<p>十七岁的女孩李珥，左耳听力不好，如果站在左边说话就听不见，不起眼而内向的李珥某天突然就暗恋男生许弋，黎吧啦因为爱上张漾而帮助他勾引许弋，暗恋许弋的李珥偶然间与其成为好友并目睹其被张漾殴打的情景，两人关系越走越近。</p>
+
+				</div>
+			</div>
+			<hr class="divider" />
+			<ul class="nav nav-tabs" role="tablist" id="tab-list">
+				<li class="active">
+					<a href="#tab-chrome" role="tab" data-toggle="tab">恐怖</a>
+				</li>
+				<li>
+					<a href="#tab-firefox" role="tab" data-toggle="tab">惊悚</a>
+				</li>
+				<li>
+					<a href="#tab-safari" role="tab" data-toggle="tab">战争</a>
+				</li>
+				<li>
+					<a href="#tab-opera" role="tab" data-toggle="tab">动作</a>
+				</li>
+				<li>
+					<a href="#tab-ie" role="tab" data-toggle="tab">动画</a>
+				</li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane active" id="tab-chrome">
+					<div class="row feature">
+						<div class="col-md-7">
+							<h1>恐怖</h1>
+							<p>在一场高架索桥倒塌引发的死亡事件中，几个幸运儿侥幸逃生，但死神显然没有放过他们，接下来。</p>
+
+						</div>
+						<div class="col-md-5">
+                            <a href="/home/movie?id=4&pgs=0"><img src="/static/images/dead5.jpeg" /></a>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab-firefox">
+					<div class="row feature">
+						<div class="col-md-7">
+                            <a href="/home/movie?id=3&pgs=0"> <img src="/static/images/jianjiao.jpg" /></a>
+						</div>
+						<div class="col-md-5">
+							<h1>惊悚</h1>
+							<p>一个高中学生成为一个神秘的杀手的下手目标。而她的闺蜜、男友、及报纸记者等，也都成为这个神秘杀手的目标……。</p>
+
+						</div>
+					</div>
+
+				</div>
+				<div class="tab-pane" id="tab-safari">
+					<div class="row feature">
+						<div class="col-md-7">
+							<h1>战争</h1>
+							<p>主要讲混沌卡欧斯出现，其带来的4种力量土、火、水、风不断在侵蚀大地，这时世界出现了4位光之战士，为解救快崩溃的世界，夺取了代表土火水风的4颗水晶，回到过去的卡欧斯神殿，打败混沌。</p>
+
+						</div>
+						<div class="col-md-5">
+                            <a href="/home/movie?id=6&pgs=0"><img src="/static/images/wallhaven-363192.jpg" /></a>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab-opera">
+					<div class="row feature">
+						<div class="col-md-7">
+							<img src="/static/images/timgRHLAZ6QV.jpg" />
+						</div>
+						<div class="col-md-5">
+							<h1>动作</h1>
+							<p>该片改编自中国近代史上的镇南关大捷战役，讲述了1885年法军进攻越南凉山，萃帅冯子材率领广西狼兵顽强抗击法军，最终取得胜利的英雄故事。</p>
+
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab-ie">
+
+
+
+					<div class="row feature">
+						<div class="col-md-7">
+							<h1>动画</h1>
+							<p>该片讲述了少女千寻意外来到神灵异世界后，为了救爸爸妈妈，经历了很多磨难的故事。2001年该片在日本最终取得了304亿日元的票房。2003年，获得第75届奥斯卡金像奖最佳动画长片奖 [</p>
+
+						</div>
+						<div class="col-md-5">
+							<img src="/static/images/1.jpg" />
+						</div>
+					</div>
+				</div>
+				</div>
+					
+				<hr class="divider"/>
+			<footer>
+					<p class=" pull-right "><a href="#top ">welcom</a></p>
+					<p>Bt 电影网</p>
+			</footer>
+				
+			</div>
+		
+				
+			<div class="modal fade" tabindex="-1" role="dialog" id="about1">//主旨
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">欢迎大家监督,本站所有资源来源于网友交流,只供网络测试、请在24小时内删除所下内容，开始清理无版权的内容，请大家支持正版到影院观看或购买正版CD!
+</h4>
+      </div>
+      <div class="modal-body">
+          <a href="https://www.dytt8.net/"><p>计科一班二组制作</p></a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+			
+			
+		<div class="modal fade" tabindex="-1" role="dialog" id="about">//关于
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">十九世纪30年代，电影开始了它的诞生前的技术准备期，也叫做发明期。
+　　早在1829年，比利时著名物理学家约瑟夫普拉多发现：当一个物体在人的眼前消失后，该物体的形象还会在人的视网膜上滞留一段时间，这一发现，被称之为“视象暂留原理”。普拉多根据此原理于1832年发明了“诡盘”。“诡盘”能使被描画在锯齿形的硬纸盘上的画片因运动而活动起来，而且能使视觉上产生的活动画面分解为各种不同的形象。“诡盘”的出现，标志着电影的发明进入到了科学实验阶段。1834年，美国人霍尔纳的“活动视盘”试验成功；1853年，奥地利的冯乌却梯奥斯将军在上述的发明基础上，运用幻灯，放映了原始的动画片。</h4>
+      </div>
+      <div class="modal-body">
+          <a href="https://zhidao.baidu.com/question/335967296.html"><p>计科一班二组制作</p></a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+	<canvas id="canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:-2;"></canvas>
+
+		<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+		<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js "></script>
+		<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js "></script>
+			
+
+
+	<script>
+			$(document).ready(function(){
+				$("#demo-nabar .dropdown-menu a").click(function(){
+					var href=$(this).attr("href");
+					$("#tab-list a[href='" + href + "']").tab("show");
+				})
+			})
+        "use strict";
+var canvas = document.getElementById('canvas'),
+  ctx = canvas.getContext('2d'),
+  w = canvas.width = window.innerWidth,
+  h = canvas.height = window.innerHeight,
+
+  hue = 217,
+  stars = [],
+  count = 0,
+  maxStars = 1300;//星星数量
+
+var canvas2 = document.createElement('canvas'),
+  ctx2 = canvas2.getContext('2d');
+canvas2.width = 100;
+canvas2.height = 100;
+var half = canvas2.width / 2,
+  gradient2 = ctx2.createRadialGradient(half, half, 0, half, half, half);
+gradient2.addColorStop(0.025, '#CCC');
+gradient2.addColorStop(0.1, 'hsl(' + hue + ', 61%, 33%)');
+gradient2.addColorStop(0.25, 'hsl(' + hue + ', 64%, 6%)');
+gradient2.addColorStop(1, 'transparent');
+
+ctx2.fillStyle = gradient2;
+ctx2.beginPath();
+ctx2.arc(half, half, half, 0, Math.PI * 2);
+ctx2.fill();
+
+// End cache
+
+function random(min, max) {
+  if (arguments.length < 2) {
+    max = min;
+    min = 0;
+  }
+
+  if (min > max) {
+    var hold = max;
+    max = min;
+    min = hold;
+  }
+
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function maxOrbit(x, y) {
+  var max = Math.max(x, y),
+    diameter = Math.round(Math.sqrt(max * max + max * max));
+  return diameter / 2;
+  //星星移动范围，值越大范围越小，
+}
+
+var Star = function() {
+
+  this.orbitRadius = random(maxOrbit(w, h));
+  this.radius = random(60, this.orbitRadius) / 18;
+  //星星大小
+  this.orbitX = w / 2;
+  this.orbitY = h / 2;
+  this.timePassed = random(0, maxStars);
+  this.speed = random(this.orbitRadius) / 150000;
+  //星星移动速度
+  this.alpha = random(2, 10) / 10;
+
+  count++;
+  stars[count] = this;
+}
+
+Star.prototype.draw = function() {
+  var x = Math.sin(this.timePassed) * this.orbitRadius + this.orbitX,
+    y = Math.cos(this.timePassed) * this.orbitRadius + this.orbitY,
+    twinkle = random(10);
+
+  if (twinkle === 1 && this.alpha > 0) {
+    this.alpha -= 0.05;
+  } else if (twinkle === 2 && this.alpha < 1) {
+    this.alpha += 0.05;
+  }
+
+  ctx.globalAlpha = this.alpha;
+  ctx.drawImage(canvas2, x - this.radius / 2, y - this.radius / 2, this.radius, this.radius);
+  this.timePassed += this.speed;
+}
+
+for (var i = 0; i < maxStars; i++) {
+  new Star();
+}
+
+function animation() {
+  ctx.globalCompositeOperation = 'source-over';
+  ctx.globalAlpha = 0.5; //尾巴
+  ctx.fillStyle = 'hsla(' + hue + ', 64%, 6%, 2)';
+  ctx.fillRect(0, 0, w, h)
+
+  ctx.globalCompositeOperation = 'lighter';
+  for (var i = 1, l = stars.length; i < l; i++) {
+    stars[i].draw();
+  };
+
+  window.requestAnimationFrame(animation);
+}
+
+animation();
+		</script>//搜索框
+<script src="http://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="/static/js/jquery-1.11.0.min.js"><\/script>')</script>
+	<script type="text/javascript">
+        function searchToggle(obj, evt){
+            var container = $(obj).closest('.search-wrapper');
+
+            if(!container.hasClass('active')){
+                  container.addClass('active');
+                  evt.preventDefault();
+            }
+            else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
+                  container.removeClass('active');
+                  // clear input
+                  container.find('.search-input').val('');
+                  // clear and hide result container when we press close
+                  container.find('.result-container').fadeOut(100, function(){$(this).empty();});
+            }
+            searchToggle()
+        }
+
+        function submitFn(obj, evt){
+            value = $(obj).find('.search-input').val().trim();
+
+            _html = "Yup yup! Your search text sounds like this: ";
+            if(!value.length){
+                _html = "Yup yup! Add some text friend :D";
+            }
+            else{
+                _html += "<b>" + value + "</b>";
+            }
+
+            $(obj).find('.result-container').html('<span>' + _html + '</span>');
+            $(obj).find('.result-container').fadeIn(100);
+            var form=document.getElementById("sbmit");
+            form.submit();
+           {% comment %} evt.preventDefault();{% endcomment %}
+        }
+    </script>
+	
+	
+	</body>
+
+</html>

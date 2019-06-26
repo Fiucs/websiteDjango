@@ -1,0 +1,207 @@
+*
+{
+	padding:0px;
+	margin:0px;
+	text-decoration: none;
+}
+html
+{
+
+	
+}
+a
+{
+	cursor: pointer;
+}
+body{
+	/*background-image:url(/static/images/5.jpg);*/
+
+	-moz-background-size:100% 100%;
+	height:100%;
+	width: 100%;
+	background-size:100% 100%;
+	background-repeat:no-repeat;
+
+            margin: 0;
+            padding: 0;
+	background-color: #000000;
+
+
+}
+
+header
+{
+/*	border:solid 1px red;*/
+	height:6.5%;
+	width:auto;
+	margin:0 auto;
+	background-color:rgba(0,0,0,0.7);
+}
+.head_l
+{
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	height:100%;
+	width:30%;
+/*	border:solid 1px white;*/
+	color:white;
+	font-weight: 500;
+	float:left;
+}
+.head_c
+{
+/*	border:solid 1px white;*/
+	height:100%;
+	width:60%;
+	float:right;
+	color:white;
+}
+
+
+ul li
+{
+	
+	float:left;
+	margin-left:15%;
+	list-style-type: none;
+	margin-top:2%;
+}
+ul li a
+{
+	color:white;
+	font-weight:100;
+}
+.clearfix:after
+		{
+			content:'';
+			display: block;
+			clear:both;
+		}
+
+.a1:hover
+{
+	font-weight: 1000;
+	text-decoration: none;
+	color:white;
+}
+.a1:active
+{
+	font-weight:2000;
+	color:aquamarine;
+}
+.a1:focus
+{
+	color:greenyellow;
+	text-decoration:none;
+	}
+
+
+table,th,td
+{	
+	border:solid 1px none;
+	text-align: center;
+	font-size: 13px;
+	font-family: inherit;
+
+}
+.th1
+{
+	width:500px;
+
+}
+.th2
+{
+	width:500px;
+
+}
+td
+{
+	height:30px;
+}
+.table
+{
+	background-color:rgba(0,0,0,0.6);
+
+	position: relative;
+	color:rgba(173, 255, 47, 1);
+	margin:0 auto;
+}
+td a
+{
+	color:white;
+}
+.picture
+{
+	width:100%;
+	height:129px;
+	position:absolute;
+	top:62px;
+/*	border:solid 1px red;*/
+}
+.picture :nth-child(n)
+{
+	width:314px;
+	height:100%;
+/*	border:solid 1px red;*/
+	float:left;
+	margin-left:5px;
+}
+.picture1
+{
+	background-image:url(/static/images/3398348_739827.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.picture2
+{
+	background-image:url(/static/images/wallhaven-241627.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.picture3
+{
+	background-image:url(/static/images/wallhaven-182680.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.picture4
+{
+	background-image:url(/static/images/wallhaven-33397.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.picture5
+{
+	background-image:url(/static/images/wallhaven-363192.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.picture6
+{
+	background-image:url(/static/images/iamwha_043_0606.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+th,td :hover
+{
+	color:lightsalmon;
+}
+.movie
+{
+	width:1000px;
+	height:200px;
+	border:solid 2px red;
+}
+tr{
+	height: 2%;
+	position: relative;
+}
+.tbod{
+	height: 31.8px;
+	width: 998px;
+}
+
+
+
+

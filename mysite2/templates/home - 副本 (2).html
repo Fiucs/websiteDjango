@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/allmovie.css" />
+    <title >I see you</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <style type="text/css">
+            .serch_area1{
+           width: 50px;
+           margin-left: 6px ;
+            margin-top: 9px;}
+         .res{
+             top: 40px;
+             margin-left: 10%;
+             margin-top: -2%;
+             overflow: hidden;
+             width: 76%;
+             height: 1024px;
+                        }
+        .div_form{
+            height: 1%;
+            width: 30%;
+            padding-top: 12%;
+            margin-left: 35%;
+            margin-bottom: 2%;
+                        }
+        .page{
+            padding-bottom:0%;
+            margin-top: 1px;
+            margin-left: 22%;
+            color: red;
+            font-size: 15px;
+        }
+        .bt{
+           width: 64px;
+            height: 30px;
+            position: relative;
+            margin-top: 1px;
+            margin-left:1px;
+        }
+        .bt_text{
+            width: 235px;
+            height: 25px;
+
+        }
+        .div_all{
+            width: 1300px;
+            height: 1368px;
+            margin: 0 auto;
+        }
+        .div1{
+            height: 1920px;width:1080px;
+        }
+        .lead{
+            height:30px;
+            width:100%;
+            background-color: skyblue;
+            color:grey;
+            padding:5px;
+            top:0px;
+            text-decoration: none;
+        }
+        .lead ul li{
+                float:left;
+        }
+            .lead ul li:focus{
+                clolor:red;
+        }
+    </style>
+    <script language="JavaScript">
+        function ser() {
+            var a=document.getElementById("sh").value*1;
+            var max={{ cpage }};
+            if (a>=1 && a<=max)
+            {
+                var href="/test/trtopage?pgs="+a+"&kw1={{ keyword }}";
+            window.location.href=href;
+            }
+            else
+                alert("重新输入 亲")
+
+        }
+    </script>
+    <script type="text/javascript">
+        var Enter=document.getElementById("ent");
+        Enter.onkeydown=function (event) {
+            if(event.keyCode == 13){
+
+                Enter.click();
+            }
+
+        }
+    </script>
+    <meta charset="utf-8">
+
+</head>
+
+<body>
+
+
+
+<div class="div1" id="mydiv1" >
+
+
+</div>
+<div  class="div_all">
+<div class="lead">
+                <ul>
+                    <li><a href="/home/movie?id=0&pgs=0">喜剧片</a></li>
+				    <li><a class="a1" href="/home/movie?id=1&pgs=0">科幻片</a></li>
+				    <li><a class="a1" href="/home/movie?id=2&pgs=0">动作片</a></li>
+				    <li><a class="a1" href="#">爱情片</a></li>
+                    <li><a class="a1" href="/home/movie?id=3&pgs=0">惊悚片</a></li>
+                    <li><a class="a1" href="/home/movie?id=4&pgs=0">恐怖片</a></li>
+                    <li><a class="a1" href="/home/movie?id=5&pgs=0">战争片</a></li>
+                    <li><a class="a1" href="/home/movie?id=6&pgs=0">动画片</a></li>
+			</ul></div>
+  <form action="/test/"  method="get">
+    <div class="div_form">
+    <input class="bt_text" onmouseover="this.style.borderColor='black';this.style.backgroundColor='transparent'"
+style="width: 106; height: 21"
+onmouseout="this.style.borderColor='white';this.style.backgroundColor='ffffff'" style="border-width:1px;border-color=darkseagreen" name="k" ><input class="bt" type="submit"  value="查询">
+</div>
+</form>
+
+<div class="res">
+
+    <table id="table" class="table">
+
+        <tbody class="tbod" id="tr1">
+
+<tr>
+			<th class="th1">日，韩，欧美，大陆，，，</th>
+			<th class="th2">Thunder=</th>
+            </tr>
+
+         </tbody>
+
+ </table>
+</div>
+
+
+<div id="page" class="page" >
+
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总共有:{{ countall }}条&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总共:{{ cpage }}页&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当前第{{ crtpages }}页
+    {% if crtpage > 0 %}
+    <input class="bt" type="button" onclick="location.href='/test/homeback?pg={{ crtpage }}&kw={{ keyword }}'" value="上一页">
+    {% else %}
+        <input class="bt" type="button" disabled="disabled" value="上一页">
+    {% endif %}
+    {% if crtpages < cpage %}
+
+   <input class="bt" type="button" onclick="location.href='/test/homenext?pg={{ crtpage }}&kw={{ keyword }}'" value="下一页"> <br/>
+    {% else %}
+    <input class="bt" type="button" disabled="disabled" value="下一页"> <br/>
+    {% endif %}
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每页有:{{ countpg }}条&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;跳转至
+    `
+        <input class="serch_area1" type="text" name="page" id="sh">页
+        <input type="button" class="bt" value="确认" onclick="ser()" id="ent">
+
+    <br/>
+</div>
+</div>
+
+
+
+
+</body>
+
+
+<script>
+    window.onload = function(){
+	var str={{ string1|safe }};
+
+	var movie = document.getElementById('movie');
+	var table = document.getElementById('table');
+    var tr1 = document.getElementById('tr1');
+
+
+{#	for(var i=0;i<str.length;i++)#}
+{#	{#}
+{#		for(var j=0;j<str[i].length;j++)#}
+{#		  {var newNode = document.createElement("tr");#}
+{#		   newNode.innerHTML = `<td> <a>${str[i][j]}</a></td> <td><a>${str[i][j]}</a></td>`;#}
+{#  			table.appendChild(newNode);#}
+{#				}#}
+{#	}#}
+        for(var i =0;i<str.length;i++) {
+            var node = document.createElement('tr');
+            node.innerHTML = `<td>${str[i][0]}</td><td><a href="${str[i][1]}">下载</a></td>`
+                tr1.appendChild(node)
+        }
+}
+</script>
+<script type="text/javascript">
+		window.onload = function() {
+		    //配置
+		    var config = {
+		        vx: 4,	//小球x轴速度,正为右，负为左
+		        vy: 4,	//小球y轴速度
+		        height: 2,	//小球高宽，其实为正方形，所以不宜太大
+		        width: 2,
+		        count: 200,		//点个数
+		        color: "121, 162, 185", 	//点颜色
+		        stroke: "130,255,255", 		//线条颜色
+		        dist: 6000, 	//点吸附距离
+		        e_dist: 20000, 	//鼠标吸附加速距离
+		        max_conn: 10 	//点到点最大连接数
+		    }
+
+		    //调用
+		    CanvasParticle(config);
+		}
+	</script>
+	<script type="text/javascript" src="/static/js/canvas-particle.js"></script>
+
+
+
+</html>
